@@ -1,0 +1,1 @@
+from gym_2048_ver2023.envs.env_2048 import Game2048Env, NormGame2048Env_ver0, NormGame2048Env_ver1
