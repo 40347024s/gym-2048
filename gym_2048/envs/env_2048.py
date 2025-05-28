@@ -212,7 +212,7 @@ class Game2048Env(gym.Env):
 class NormGame2048Env_ver0(Game2048Env):
     def __init__(self, render_mode=None, size=4) -> None:
         super().__init__(render_mode, size)
-        self.max_pow_of_two = 16
+        self.max_pow_of_two = 20
         self.observation_space = gym.spaces.Box(low=0.0, high=1.0, shape=(1, self.size, self.size), dtype=float)
 
     def encode_state(self, input_board):
@@ -224,7 +224,7 @@ class NormGame2048Env_ver0(Game2048Env):
 class NormGame2048Env_ver1(Game2048Env):
     def __init__(self, render_mode=None, size=4) -> None:
         super().__init__(render_mode, size)
-        self.max_pow_of_two = 16
+        self.max_pow_of_two = 20
         self.observation_space = gym.spaces.Box(low=0.0, high=1.0, shape=(self.max_pow_of_two, self.size, self.size), dtype=float)
         self.state_mask = np.ones(self.observation_space.shape).astype(np.int32)
         self.state_mask[0] *= 0
