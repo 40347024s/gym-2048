@@ -29,6 +29,6 @@ pip install -e /path/to/gym-2048
       - C=0, this channel is for all grid positions with no value.
       - C=i, channel is for all grid positions with 2^i.
   - **State values**: 0~1
-    - Same as NormGame2048Env_ver0
+    - For i-th channel, 1 is 2^i exists and 0 is not.
 
 
