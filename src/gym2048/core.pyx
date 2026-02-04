@@ -8,7 +8,7 @@ cdef inline uint64_t xorshift64star(uint64_t x) nogil:
     x ^= x >> 12
     x ^= x << 25
     x ^= x >> 27
-    return x * 2685821657736338717
+    return x * <uint64_t>2685821657736338717
 
 cdef inline int move_line(uint16_t* line, uint16_t* out, int* reward) nogil:
     cdef uint16_t tmp0, tmp1, tmp2, tmp3
@@ -54,12 +54,12 @@ cdef inline int move_line(uint16_t* line, uint16_t* out, int* reward) nogil:
     return 0
 
 cdef class Board:
-    cdef np.ndarray[np.uint16_t, ndim=1] board
+    cdef np.ndarray board
     cdef uint64_t rng_state
 
     def __cinit__(self):
         self.board = np.zeros(16, dtype=np.uint16)
-        self.rng_state = 0x9e3779b97f4a7c15
+        self.rng_state = <uint64_t>0x9e3779b97f4a7c15
 
     cdef inline uint64_t _rand_u64(self) nogil:
         self.rng_state = xorshift64star(self.rng_state)
@@ -67,7 +67,7 @@ cdef class Board:
 
     cdef inline void _seed(self, uint64_t seed) nogil:
         if seed == 0:
-            self.rng_state ^= 0x9e3779b97f4a7c15
+            self.rng_state ^= <uint64_t>0x9e3779b97f4a7c15
         else:
             self.rng_state = seed
 
