@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=64", "wheel", "Cython>=0.29.36", "numpy>=1.22"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gym2048"
+version = "0.1.0"
+description = "A fast 2048 environment for Gymnasium (Cython-accelerated)."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [
+  { name = "Yu-Hsun Chen" }
+]
+keywords = ["2048", "gymnasium", "reinforcement-learning", "cython"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Cython",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+]
+dependencies = [
+  "gymnasium>=0.28",
+  "numpy>=1.22",
+]
