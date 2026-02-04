@@ -206,3 +206,9 @@ cdef class Board:
 
     cpdef np.ndarray copy_board(self):
         return self.board.reshape((4, 4)).copy()
+
+    cpdef set_board(self, np.ndarray board_in):
+        cdef np.ndarray arr = np.asarray(board_in, dtype=np.uint16)
+        if arr.size != 16:
+            raise ValueError("board must have 16 elements")
+        self.board[:] = arr.reshape(16)
