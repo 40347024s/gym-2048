@@ -64,14 +64,15 @@ class Game2048Env(gym.Env):
     metadata = {'render_modes': ['human', 'rgb_array'], 'render_fps': 8}
 
     def __init__(self, render_mode=None, size=4) -> None:
-        pygame.init()
-        pygame.display.init()
-        pygame.font.init()
-        self.font = pygame.font.SysFont('monospace', 24)
-
+        if render_mode:
+            pygame.init()
+            pygame.display.init()
+            pygame.font.init()
+            self.font = pygame.font.SysFont('monospace', 24)
+            self.window_size = 450
+            self.cmap = plt.get_cmap('Spectral')
+        
         self.size = size
-        self.window_size = 450
-        self.cmap = plt.get_cmap('Spectral')
         self.val2cmap_key: tp.Dict[float, float] = {2.0**i: i/20 for i in range(1, 20)}
         self.cur_iteration = 0
         self.max_iteration = 10000
